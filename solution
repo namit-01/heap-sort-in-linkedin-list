@@ -1,0 +1,29 @@
+
+class Node:
+    def __init__(self, data):   # data -> value stored in node
+        self.data = data
+        self.next = None
+
+import heapq
+class Solution:
+    def insertionSort(self, head):
+        #code here
+        temp=head
+        i=0
+        hq=[]
+        
+        while temp!=None:
+            heapq.heappush(hq,(temp.data,i,temp))
+            i=i+1
+            temp=temp.next
+        dummy=Node(-1)
+        tail=dummy
+        while hq:
+            a,b,c=heapq.heappop(hq)
+            tail.next=c
+            tail=tail.next
+        tail.next=None
+        return dummy.next
+            
+            
+        
